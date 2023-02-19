@@ -21,7 +21,7 @@ if(get('action') == 'login') {
 
   $params = array(
     'client_id' => OAUTH2_CLIENT_ID,
-    'redirect_uri' => 'https://oauth2-discord-php.vercel.app',
+    'redirect_uri' => 'https://oauth2-discord-php.vercel.app/api/index.php',
     'response_type' => 'code',
     'scope' => 'identify guilds'
   );
@@ -49,7 +49,7 @@ if(get('code')) {
     "grant_type" => "authorization_code",
     'client_id' => OAUTH2_CLIENT_ID,
     'client_secret' => OAUTH2_CLIENT_SECRET,
-    'redirect_uri' => 'https://oauth2-discord-php.vercel.app',
+    'redirect_uri' => 'https://oauth2-discord-php.vercel.app/api/index.php',
     'code' => get('code')
   ));
   $logout_token = $token->access_token;
