@@ -1,7 +1,8 @@
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-ini_set('max_execution_time', 300); //300 seconds = 5 minutes. In case if your CURL is slow and is loading too much (Can be IPv6 problem)
+ini_set('max_execution_time', 300); //300 seconds = 5 minutes.
+// In case if your CURL is slow and is loading too much (Can be IPv6 problem)
 
 error_reporting(E_ALL);
 
@@ -20,7 +21,7 @@ if(get('action') == 'login') {
 
   $params = array(
     'client_id' => OAUTH2_CLIENT_ID,
-//    'redirect_uri' => 'http://localhost:80',
+    'redirect_uri' => 'https://oauth2-discord-php.vercel.app',
     'response_type' => 'code',
     'scope' => 'identify guilds'
   );
@@ -48,7 +49,7 @@ if(get('code')) {
     "grant_type" => "authorization_code",
     'client_id' => OAUTH2_CLIENT_ID,
     'client_secret' => OAUTH2_CLIENT_SECRET,
-//    'redirect_uri' => 'http://localhost:80',
+    'redirect_uri' => 'https://oauth2-discord-php.vercel.app',
     'code' => get('code')
   ));
   $logout_token = $token->access_token;
@@ -128,6 +129,3 @@ function get($key, $default=NULL) {
 function session($key, $default=NULL) {
   return array_key_exists($key, $_SESSION) ? $_SESSION[$key] : $default;
 }
-
-?>
-
