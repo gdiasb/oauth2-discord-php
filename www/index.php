@@ -5,3 +5,5 @@
 
 require_once 'oauth2discord.php';
 
+echo "Hello";
+
